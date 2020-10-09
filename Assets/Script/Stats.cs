@@ -16,7 +16,7 @@ public class Stats : MonoBehaviour
     {
         totalRuntime.text = "Total Runtime:" + middleMan.LoadTotalTime().ToString();
 
-        diffText.text = "RTBC: ";
+        diffText.text = "RTBC:\n";
         for(int i = 0; i < middleMan.CheckpointCount(); i++)
         {
             diffText.text += "Checkpoint #" + i.ToString() + ": " + middleMan.LoadTime(i) + "\n";
