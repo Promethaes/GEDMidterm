@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 1.0f;
     public Walls allWalls;
 
+    public DLLMiddleMan middleMan;
+
     GameObject lastTouchedCheckpoint;
 
     public TimeLogCS timeLog;
@@ -64,12 +66,10 @@ public class PlayerMovement : MonoBehaviour
                     return;
 
             lastTouchedCheckpoint = other.gameObject;
-            lastTouchedCheckpoint.GetComponent<Checkpoint>().touchTime = Time.time;
-            timeLog.touchOrder.Add(other.gameObject.GetComponent<Checkpoint>());
-            timeLog.CalculateDiffs();
 
+            //send through dll
+            middleMan.SaveTime(Time.time);
             lastTouchedCheckpoint.SetActive(false);
-
             if (other.gameObject.GetComponent<Exit>())
             {
                 SceneManager.LoadScene("ExitScene");
