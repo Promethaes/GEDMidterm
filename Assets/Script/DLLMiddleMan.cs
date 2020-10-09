@@ -27,6 +27,11 @@ public class DLLMiddleMan : MonoBehaviour
         SaveCheckpointTime(checkpointTime);
     }
 
+    public int CheckpointCount()
+    {
+        return GetNumCheckpoints();
+    }
+
     public float LoadTime(int index)
     {
         if (index < 0 || index >= GetNumCheckpoints())
